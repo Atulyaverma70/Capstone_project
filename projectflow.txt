@@ -281,4 +281,4 @@ What is a PVC?
 2. PVCs use StorageClasses to define how the volume should be provisioned (e.g., EBS volumes on AWS, NFS, etc.).
 3. When a pod is deployed and needs storage, it will request the storage defined in the PVC.
 
-----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------- 
