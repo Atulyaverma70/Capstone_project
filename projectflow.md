@@ -100,7 +100,7 @@ If the path points to your Anaconda environment (e.g., C:\Users\Personal\anacond
 * Download eksctl: Invoke-WebRequest -Uri "https://github.com/weaveworks/eksctl/releases/download/v0.158.0/eksctl_Windows_amd64.zip" -OutFile "eksctl.zip"
 * Extract eksctl: Expand-Archive -Path .\eksctl.zip -DestinationPath .
 * Move the extracted eksctl.exe file to C:\Windows\System32 or any folder in your system PATH: Move-Item -Path .\eksctl.exe -Destination "C:\Windows\System32\eksctl.exe"
-----------------------------------------------------------------------------------
+-------------------------------------------------   ---------------------------------
 * Verify AWS CLI: aws --version
 * Verify kubectl: kubectl version --client
 * Verify eksctl: eksctl version
