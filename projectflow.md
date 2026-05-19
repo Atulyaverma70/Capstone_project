@@ -141,10 +141,10 @@ kubectl get svc
 
 
 48. Once the LoadBalancer service is up, get the external IP:
-kubectl get svc flask-app-service
+sudo nano /etc/prometheus/prometheus.yml
 
-49. Try externa-ip:5000 directly on url or on terminal : curl http://external-ip:5000
-curl http://a6bf6255d5f61470c9782b8955c98271-1409247973.us-east-1.elb.amazonaws.com:5000
+49. Try externa-ip:5000 directly on url or on terminal : 
+kubectl logs -f deployment/flask-app
 
 
 
@@ -158,8 +158,7 @@ curl http://a6bf6255d5f61470c9782b8955c98271-1409247973.us-east-1.elb.amazonaws.
 51. SSH into the EC2 Instance(optional or connect directly to ec2 server alternatively):
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
 
-52. Update packages: sudo apt update && sudo apt upgrade -y
-
+52. Update packages: 
 53. Download Prometheus:
 wget https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometheus-2.46.0.linux-amd64.tar.gz
 tar -xvzf prometheus-2.46.0.linux-amd64.tar.gz
@@ -179,7 +178,7 @@ global:
 scrape_configs:
   - job_name: "flask-app"
     static_configs:
-      - targets: ["a6bf6255d5f61470c9782b8955c98271-1409247973.us-east-1.elb.amazonaws.com:5000"]  # Replace with your app's External IP
+      - targets: ["http://af0e14f89c9eb43d98f749eaa519cdcf-1739228936.us-east-1.elb.amazonaws.com"]  # Replace with your app's External IP
 
 
 
@@ -192,6 +191,7 @@ This should return the full path to the prometheus binary, such as /usr/local/bi
 
 57. Run Prometheus with the config file:
 /usr/local/bin/prometheus --config.file=/etc/prometheus/prometheus.yml
+
 
 
 
@@ -219,7 +219,7 @@ sudo apt update && sudo apt upgrade -y
 
 66. Open Grafana web UI: http://<ec2-public-ip>:3000 (username/pass - admin)
 
-67. Add Prometheus as a Data Source: http://54.81.71.206/:9090
+67. Add Prometheus as a Data Source: http://98.84.133.28/:9090
     click - Save and Test | Get started with building dashboards.
 
 
